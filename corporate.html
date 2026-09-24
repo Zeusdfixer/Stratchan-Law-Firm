@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Corporate & Commercial Law — Strachan & Associates</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0D0D0D;--navy:#1A1A2E;--gold:#B8960C;--gold-light:#D4AF37;
+  --parchment:#F0EDE6;--white:#FFFFFF;--muted:#6B7280;--text:#1a1a1a;
+  --border:rgba(184,150,12,0.2);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--parchment);color:var(--text);overflow-x:hidden}
+[contenteditable="true"]{outline:none;transition:background .2s}
+[contenteditable="true"]:hover{background:rgba(184,150,12,0.1);border-radius:3px;cursor:text}
+[contenteditable="true"]:focus{background:rgba(184,150,12,0.18);border-radius:3px}
+.img-swap{cursor:pointer;position:relative}
+.img-swap::after{content:'📷 Click to swap';position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.75);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;font-family:'Inter',sans-serif}
+.img-swap:hover::after{opacity:1}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 60px;background:rgba(13,13,13,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:38px;vertical-align:middle}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links .nav-cta{background:var(--gold);color:var(--black) !important;padding:9px 22px;border-radius:2px;font-weight:600 !important;letter-spacing:0.06em}
+.nav-links .nav-cta:hover{background:var(--gold-light) !important}
+.nav-practice-links{display:flex;gap:0;list-style:none}
+.nav-practice-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-right:1px solid var(--border);transition:color .2s}
+.nav-practice-links a:first-child{border-left:1px solid var(--border)}
+.nav-practice-links a:hover,.nav-practice-links a.active{color:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.3}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,13,13,.95) 0%,rgba(26,26,46,.7) 100%)}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 60px;padding-top:110px;width:100%}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.8rem);font-weight:700;color:var(--white);line-height:1.08;margin-bottom:22px;max-width:820px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.6);max-width:500px;line-height:1.8;margin-bottom:42px}
+.hero-divider{display:flex;align-items:center;gap:18px;margin-bottom:42px}
+.hero-divider-line{flex:1;max-width:80px;height:1px;background:var(--gold);opacity:.5}
+.hero-divider-icon{color:var(--gold);font-size:1.1rem}
+.btn-primary{background:var(--gold);color:var(--black);padding:14px 34px;font-weight:600;font-size:0.88rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .2s,transform .2s;display:inline-block;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:var(--white);padding:14px 34px;font-weight:500;font-size:0.88rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:border-color .2s,background .2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(184,150,12,.08)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-badges{display:flex;gap:24px;margin-top:56px;flex-wrap:wrap}
+.hero-badge{display:flex;align-items:center;gap:10px}
+.badge-icon{width:38px;height:38px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem}
+.badge-text{font-size:0.78rem;color:rgba(255,255,255,.5);letter-spacing:.05em}
+.badge-text strong{display:block;color:rgba(255,255,255,.85);font-size:0.88rem}
+
+/* SECTION BASE */
+section{padding:90px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 60px}
+.section-eyebrow{font-size:0.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.section-eyebrow::before{content:'';display:inline-block;width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--black);line-height:1.15;margin-bottom:14px}
+.section-title-light{color:var(--white)}
+.section-sub{font-size:.97rem;color:var(--muted);max-width:540px;line-height:1.75}
+.gold-rule{display:flex;align-items:center;gap:16px;margin:24px 0}
+.gold-rule span{height:1px;background:var(--gold);opacity:.35;flex:1;max-width:60px}
+.gold-rule i{color:var(--gold);font-size:.9rem}
+
+/* PRACTICE CARDS */
+.practice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:50px}
+.practice-card{background:var(--black);padding:40px 32px;border-top:3px solid transparent;transition:border-color .3s,transform .3s;cursor:pointer;text-decoration:none;display:block}
+.practice-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.practice-icon{font-size:2rem;margin-bottom:20px;display:block}
+.practice-card-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.practice-card-text{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7}
+.practice-card-link{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-top:18px;font-weight:600}
+.practice-card-link::after{content:'→'}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:50px}
+.team-card{text-align:center}
+.team-photo{width:100%;aspect-ratio:1;border-radius:3px;object-fit:cover;margin-bottom:16px;display:block}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--black);margin-bottom:4px}
+.team-role{font-size:.78rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.team-bio{font-size:.82rem;color:var(--muted);line-height:1.65}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.testi-card{background:var(--white);padding:36px 30px;border-bottom:3px solid var(--gold)}
+.testi-stars{color:var(--gold);font-size:1rem;margin-bottom:16px;letter-spacing:3px}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-style:italic;color:var(--text);line-height:1.75;margin-bottom:20px}
+.testi-author{font-size:.82rem;font-weight:600;color:var(--black)}
+.testi-case{font-size:.75rem;color:var(--muted);margin-top:2px}
+
+/* STATS STRIP */
+.stats-strip{background:var(--black);padding:60px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+
+/* CONTACT */
+.contact-section{background:var(--navy)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;margin-top:60px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:26px}
+.ci-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:5px}
+.ci-value{font-size:.97rem;color:rgba(255,255,255,.8);line-height:1.6}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:2px;padding:12px 15px;color:var(--white);font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:95px}
+.form-group select option{background:var(--navy)}
+.form-submit{background:var(--gold);color:var(--black);border:none;padding:14px 38px;font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:'Inter',sans-serif;transition:background .2s,transform .2s;align-self:flex-start}
+.form-submit:hover{background:var(--gold-light);transform:translateY(-2px)}
+
+/* PAGE HERO (practice pages) */
+.page-hero{padding:180px 0 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.35}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,13,13,.95),rgba(26,26,46,.75))}
+.page-hero-content{position:relative;z-index:2}
+.breadcrumb{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
+.breadcrumb a{color:var(--gold);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.page-hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:16px}
+.page-hero-sub{font-size:1rem;color:rgba(255,255,255,.6);max-width:580px;line-height:1.8}
+
+/* SERVICE LIST */
+.service-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:50px}
+.service-item{background:var(--white);padding:28px 24px;border-left:3px solid var(--gold);transition:box-shadow .2s}
+.service-item:hover{box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.service-item-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--black);margin-bottom:8px}
+.service-item-text{font-size:.85rem;color:var(--muted);line-height:1.7}
+
+/* FAQ */
+.faq-list{margin-top:50px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:var(--white);border-bottom:1px solid #eee}
+.faq-q{padding:22px 24px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--black);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'+';color:var(--gold);font-size:1.3rem;font-weight:300;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+.faq-a p{font-size:.9rem;color:var(--muted);line-height:1.75}
+
+/* FOOTER */
+footer{background:#080808;padding:60px 60px 30px;border-top:1px solid var(--border)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:50px}
+.footer-about{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.75;margin-top:16px;max-width:280px}
+.footer-col-title{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+.footer-links-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links-list a{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.footer-links-list a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border)}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.25)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+.footer-bottom-links a:hover{color:var(--gold)}
+
+/* EDIT BAR */
+#edit-toolbar{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--black);border:1px solid var(--gold);border-radius:5px;padding:10px 16px;display:none;align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+#edit-toolbar span{font-size:.72rem;color:rgba(255,255,255,.55);font-weight:500}
+#edit-toggle{background:var(--gold);color:var(--black);border:none;padding:6px 16px;border-radius:2px;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.05em}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .practice-grid,.team-grid,.testi-grid,.stats-grid,.footer-top{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .service-list{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .container{padding:0 20px}
+  .hero-content{padding:120px 20px 0}
+  .practice-grid,.team-grid,.testi-grid,.stats-grid,.footer-top{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:40px 20px 20px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCAyMjAgNDQiPgogIDwhLS0gU2NhbGVzIGljb24gLS0+CiAgPGxpbmUgeDE9IjIyIiB5MT0iOCIgeDI9IjIyIiB5Mj0iMzYiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTQiIHgyPSIzNCIgeTI9IjE0IiBzdHJva2U9IiNCODk2MEMiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTQiIHgyPSI2IiB5Mj0iMjQiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8bGluZSB4MT0iMzQiIHkxPSIxNCIgeDI9IjM4IiB5Mj0iMjQiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8cGF0aCBkPSJNNCwyNCBRNiwyOCA4LDI0IiBzdHJva2U9IiNCODk2MEMiIHN0cm9rZS13aWR0aD0iMS4yIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTTM2LDI0IFEzOCwyOCA0MCwyNCIgc3Ryb2tlPSIjQjg5NjBDIiBzdHJva2Utd2lkdGg9IjEuMiIgZmlsbD0ibm9uZSIvPgogIDxsaW5lIHgxPSIxNiIgeTE9IjM2IiB4Mj0iMjgiIHkyPSIzNiIgc3Ryb2tlPSIjQjg5NjBDIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gV29yZG1hcmsgLS0+CiAgPHRleHQgeD0iNTAiIHk9IjIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjEiPlNUUkFDSEFOPC90ZXh0PgogIDx0ZXh0IHg9IjUwIiB5PSIzNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiNCODk2MEMiIGxldHRlci1zcGFjaW5nPSIyIj4mYW1wOyBBU1NPQ0lBVEVTPC90ZXh0Pgo8L3N2Zz4=" alt="Strachan &amp; Associates" style="height:38px;vertical-align:middle;" class="img-swap" onclick="swapImage(this)"/></div>
+  <ul class="nav-links"><li><a href="index.html" >Home</a></li><li><a href="corporate.html" class="active">Corporate</a></li><li><a href="criminal.html" >Criminal</a></li><li><a href="family.html" >Family & Civil</a></li><li><a href="index.html#contact" class="nav-cta">Consult Us</a></li></ul>
+</nav>
+<section class="page-hero">
+  <div class="page-hero-bg img-swap" onclick="swapImage(this)" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDE0MDAgNTAwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImgiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMEQwRDBEIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMUExQTJFIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjE0MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2gpIi8+CiAgPHJlY3QgeD0iMjAwIiB5PSI4MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzODAiIGZpbGw9IiMxQTFBMkUiIG9wYWNpdHk9IjAuOCIvPgogIDxyZWN0IHg9IjUyMCIgeT0iMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjM0MCIgZmlsbD0iIzFBMUEyRSIgb3BhY2l0eT0iMC43Ii8+CiAgPHJlY3QgeD0iODIwIiB5PSI2MCIgd2lkdGg9IjM1MCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiMxQTFBMkUiIG9wYWNpdHk9IjAuOCIvPgogIDxnIGZpbGw9IiNCODk2MEMiIG9wYWNpdHk9IjAuMjUiPgogICAgPHJlY3QgeD0iMjE1IiB5PSIxMDAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9IjI1NSIgeT0iMTAwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjI5NSIgeT0iMTAwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz48cmVjdCB4PSIzMzUiIHk9IjEwMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+CiAgICA8cmVjdCB4PSIzNzUiIHk9IjEwMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+PHJlY3QgeD0iNDE1IiB5PSIxMDAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPgogICAgPHJlY3QgeD0iMjE1IiB5PSIxNTAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9IjI1NSIgeT0iMTUwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjI5NSIgeT0iMTUwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz48cmVjdCB4PSIzMzUiIHk9IjE1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+CiAgICA8cmVjdCB4PSIzNzUiIHk9IjE1MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+PHJlY3QgeD0iNDE1IiB5PSIxNTAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPgogICAgPHJlY3QgeD0iMjE1IiB5PSIyMDAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9IjI1NSIgeT0iMjAwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjI5NSIgeT0iMjAwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz48cmVjdCB4PSIzMzUiIHk9IjIwMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+CiAgICA8cmVjdCB4PSI4NDAiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz48cmVjdCB4PSI4ODAiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjkyMCIgeT0iODAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9Ijk2MCIgeT0iODAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPgogICAgPHJlY3QgeD0iMTAwMCIgeT0iODAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9IjEwNDAiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjEwODAiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz48cmVjdCB4PSIxMTIwIiB5PSI4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+CiAgICA8cmVjdCB4PSI4NDAiIHk9IjEzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+PHJlY3QgeD0iODgwIiB5PSIxMzAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPgogICAgPHJlY3QgeD0iOTIwIiB5PSIxMzAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzNSIvPjxyZWN0IHg9Ijk2MCIgeT0iMTMwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICAgIDxyZWN0IHg9IjEwMDAiIHk9IjEzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjM1Ii8+PHJlY3QgeD0iMTA0MCIgeT0iMTMwIiB3aWR0aD0iMzAiIGhlaWdodD0iMzUiLz4KICA8L2c+CiAgPHJlY3QgeD0iMCIgeT0iNDkwIiB3aWR0aD0iMTQwMCIgaGVpZ2h0PSIyIiBmaWxsPSIjQjg5NjBDIiBvcGFjaXR5PSIwLjQiLz4KPC9zdmc+')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Corporate & Commercial Law</div>
+    <div class="hero-eyebrow" contenteditable="true">Corporate & Commercial — Practice Area</div>
+    <h1 class="page-hero-title" contenteditable="true">Your Business Deserves<br/><em style="color:var(--gold)">Counsel That Wins.</em></h1>
+    <p class="page-hero-sub" contenteditable="true">Our corporate team delivers strategic legal solutions for transactions, disputes, governance and compliance — protecting your business at every stage.</p>
+    <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="index.html#contact" class="btn-primary">Book a Consultation</a>
+      <a href="index.html" class="btn-ghost">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--parchment)">
+  <div class="container">
+    <div class="section-eyebrow" contenteditable="true">Practice Area</div>
+    <h2 class="section-title" contenteditable="true">Corporate & Commercial Law</h2>
+    <p class="section-sub" contenteditable="true">From boardroom strategy to courtroom representation, our corporate and commercial team delivers sophisticated legal solutions for businesses navigating complex challenges.</p>
+    <div class="service-list"><div class="service-item"><div class="service-item-title" contenteditable="true">Mergers & Acquisitions</div><p class="service-item-text" contenteditable="true">Expert legal guidance through every stage of M&A transactions, from due diligence to post-merger integration.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Corporate Governance</div><p class="service-item-text" contenteditable="true">Advising boards and executives on fiduciary duties, regulatory obligations and best-practice governance frameworks.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Commercial Contracts</div><p class="service-item-text" contenteditable="true">Drafting, reviewing and negotiating contracts that protect your commercial interests with precision.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Dispute Resolution</div><p class="service-item-text" contenteditable="true">Litigation, arbitration and mediation services to resolve commercial disputes efficiently and favourably.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Regulatory Compliance</div><p class="service-item-text" contenteditable="true">Navigating complex regulatory landscapes across multiple jurisdictions to keep your business fully compliant.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Intellectual Property</div><p class="service-item-text" contenteditable="true">Protecting your IP assets including trademarks, patents, copyrights and trade secrets.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Employment Law</div><p class="service-item-text" contenteditable="true">Strategic counsel on employment contracts, wrongful dismissal, discrimination claims and workforce restructuring.</p></div><div class="service-item"><div class="service-item-title" contenteditable="true">Banking & Finance</div><p class="service-item-text" contenteditable="true">Advising lenders, borrowers and financial institutions on complex financing structures and security arrangements.</p></div></div>
+  </div>
+</section>
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-num" contenteditable="true">$4.2B+</div><div class="stat-label" contenteditable="true">Transaction Value Advised</div></div>
+      <div><div class="stat-num" contenteditable="true">380+</div><div class="stat-label" contenteditable="true">Corporate Clients</div></div>
+      <div><div class="stat-num" contenteditable="true">97%</div><div class="stat-label" contenteditable="true">Dispute Success Rate</div></div>
+      <div><div class="stat-num" contenteditable="true">12</div><div class="stat-label" contenteditable="true">Jurisdictions</div></div>
+    </div>
+  </div>
+</div>
+<section style="background:var(--white)">
+  <div class="container">
+    <div class="section-eyebrow" contenteditable="true">Common Questions</div>
+    <h2 class="section-title" contenteditable="true">Frequently Asked Questions</h2>
+    <div class="faq-list"><div class="faq-item"><div class="faq-q" contenteditable="true">What types of businesses do you represent?</div><div class="faq-a"><p contenteditable="true">We represent businesses of all sizes — from startups to multinational corporations — across a broad range of industries including finance, technology, energy and real estate.</p></div></div><div class="faq-item"><div class="faq-q" contenteditable="true">How do you charge for corporate work?</div><div class="faq-a"><p contenteditable="true">Our fees are structured on a matter-by-matter basis — either hourly rates, fixed fees for defined scopes, or retainer arrangements. We provide transparent fee estimates before engagement.</p></div></div><div class="faq-item"><div class="faq-q" contenteditable="true">Can you handle cross-border transactions?</div><div class="faq-a"><p contenteditable="true">Yes. Our counsel have experience across 12 jurisdictions and we maintain a network of trusted international legal partners for multi-jurisdictional matters.</p></div></div><div class="faq-item"><div class="faq-q" contenteditable="true">How quickly can you mobilise for urgent matters?</div><div class="faq-a"><p contenteditable="true">Our chambers maintains an emergency response protocol for time-critical corporate matters. We can have senior counsel engaged within hours of instruction.</p></div></div></div>
+  </div>
+</section>
+<section class="contact-section">
+  <div class="container">
+    <div class="section-eyebrow" contenteditable="true">Corporate Enquiries</div>
+    <h2 class="section-title section-title-light" contenteditable="true">Speak to Our Corporate Team</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.5)" contenteditable="true">Whether you need transactional support, dispute resolution or ongoing legal counsel, our corporate team is ready to assist.</p>
+    <div style="margin-top:36px">
+      <a href="index.html#contact" class="btn-primary">Request a Consultation</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-top">
+    <div>
+      <div><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCAyMjAgNDQiPgogIDwhLS0gU2NhbGVzIGljb24gLS0+CiAgPGxpbmUgeDE9IjIyIiB5MT0iOCIgeDI9IjIyIiB5Mj0iMzYiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTQiIHgyPSIzNCIgeTI9IjE0IiBzdHJva2U9IiNCODk2MEMiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMTQiIHgyPSI2IiB5Mj0iMjQiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8bGluZSB4MT0iMzQiIHkxPSIxNCIgeDI9IjM4IiB5Mj0iMjQiIHN0cm9rZT0iI0I4OTYwQyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8cGF0aCBkPSJNNCwyNCBRNiwyOCA4LDI0IiBzdHJva2U9IiNCODk2MEMiIHN0cm9rZS13aWR0aD0iMS4yIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTTM2LDI0IFEzOCwyOCA0MCwyNCIgc3Ryb2tlPSIjQjg5NjBDIiBzdHJva2Utd2lkdGg9IjEuMiIgZmlsbD0ibm9uZSIvPgogIDxsaW5lIHgxPSIxNiIgeTE9IjM2IiB4Mj0iMjgiIHkyPSIzNiIgc3Ryb2tlPSIjQjg5NjBDIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gV29yZG1hcmsgLS0+CiAgPHRleHQgeD0iNTAiIHk9IjIwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjEiPlNUUkFDSEFOPC90ZXh0PgogIDx0ZXh0IHg9IjUwIiB5PSIzNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiNCODk2MEMiIGxldHRlci1zcGFjaW5nPSIyIj4mYW1wOyBBU1NPQ0lBVEVTPC90ZXh0Pgo8L3N2Zz4=" alt="Strachan &amp; Associates" style="height:38px;vertical-align:middle;" class="img-swap" onclick="swapImage(this)"/></div>
+      <p class="footer-about" contenteditable="true">Strachan & Associates is a premier private legal chambers offering expert counsel across corporate, criminal, family and civil law. Discretion. Integrity. Results.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Practice Areas</div>
+      <ul class="footer-links-list">
+        <li><a href="corporate.html">Corporate & Commercial</a></li>
+        <li><a href="criminal.html">Criminal Defence</a></li>
+        <li><a href="family.html">Family & Civil</a></li>
+        <li><a href="index.html#contact">General Enquiries</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Chambers</div>
+      <ul class="footer-links-list">
+        <li><a href="index.html#team">Our Team</a></li>
+        <li><a href="index.html">About Us</a></li>
+        <li><a href="index.html#testimonials">Client Reviews</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links-list">
+        <li><a href="#" contenteditable="true">+1 (212) 555 — 0188</a></li>
+        <li><a href="#" contenteditable="true">counsel@strachan-assoc.com</a></li>
+        <li><a href="#" contenteditable="true">One Legal Plaza, Suite 1200</a></li>
+        <li><a href="#" contenteditable="true">New York, NY 10004</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" contenteditable="true">© 2025 Strachan & Associates. All rights reserved. Attorney advertising.</div>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+<div id="edit-toolbar">
+  <span id="edit-status">✏️ Edit: ON</span>
+  <button id="edit-toggle" onclick="toggleEdit()">Lock</button>
+</div>
+<input type="file" id="img-input" accept="image/*" style="display:none"/>
+<script>
+  if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
+    document.getElementById('edit-toolbar').style.display='flex';
+  }
+  let editMode=true;
+  function toggleEdit(){
+    editMode=!editMode;
+    document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editMode?'true':'false'});
+    document.getElementById('edit-status').textContent='✏️ Edit: '+(editMode?'ON':'OFF');
+    document.getElementById('edit-toggle').textContent=editMode?'Lock':'Edit';
+  }
+  let _target=null;
+  const _inp=document.getElementById('img-input');
+  function swapImage(el){_target=el;_inp.click()}
+  _inp.addEventListener('change',function(){
+    if(!this.files[0]||!_target)return;
+    const r=new FileReader();
+    r.onload=e=>{
+      if(_target.tagName==='IMG'){_target.src=e.target.result}
+      else{const i=_target.querySelector('img');if(i){i.src=e.target.result}else{_target.style.backgroundImage=`url('${e.target.result}')`;_target.style.backgroundSize='cover';_target.style.backgroundPosition='center'}}
+    };
+    r.readAsDataURL(this.files[0]);this.value='';
+  });
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item=q.parentElement;
+      document.querySelectorAll('.faq-item.open').forEach(o=>{if(o!==item)o.classList.remove('open')});
+      item.classList.toggle('open');
+    });
+  });
+  window.addEventListener('scroll',()=>{
+    document.querySelector('nav').style.boxShadow=window.scrollY>40?'0 4px 24px rgba(0,0,0,.6)':'none';
+  });
+</script>
+</body>
+</html>
